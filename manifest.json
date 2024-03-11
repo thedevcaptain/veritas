@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Test",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "desktopCapture",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://*/*"
+  ],
+  "background": {
+    "type": "module",
+    "service_worker": "src/background.js"
+  },
+  "externally_connectable": {
+    "matches": ["https://*/*","chrome://*/*"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["src/event-monitor.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/index.html",
+    "default_icon": "assets/icon.png"
+  }
+}
